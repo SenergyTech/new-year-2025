@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  /* Half the total content is the size of one logo list (9 logos) */
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Define the utility class for use in your component */
+.animate-scroll {
+  animation: scroll 60s linear infinite;
+}
