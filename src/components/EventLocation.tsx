@@ -74,7 +74,7 @@ export default function EventLocation({
         >
           {/* LEFT COLUMN: Venue Info & Details - Styled as a Gatsby Panel */}
           <Box
-            className="lg:w-1/2 lg:py-10 lg:px-10  p-6 rounded-sm shadow-xl"
+            className="lg:w-1/2 lg:py-10 lg:px-10   p-6 rounded-sm shadow-xl"
             sx={{
               // Use background.paper and custom border/shadow for Gatsby look
               bgcolor: "background.paper",
@@ -161,10 +161,10 @@ export default function EventLocation({
               borderRadius: 4,
             }}
           >
-            <Box className="w-full h-full bg-black ">
+            <Box className="w-full h-full bg-black p-4">
               <iframe
                 src={mapIframeSrc}
-                className="w-full h-full border border-black shadow shadow-white rounded-3xl"
+                className="w-full h-full  shadow-md shadow-gray-500 rounded-4xl"
                 loading="lazy"
                 title="Event Venue Map"
                 allowFullScreen={true}
