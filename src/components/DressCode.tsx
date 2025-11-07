@@ -16,7 +16,7 @@ export default function DressCode() {
   return (
     <Box
       component="section"
-      className="py-12" // Increased vertical padding for more space
+      className="py-12 mx-10" // Increased vertical padding for more space
       // Use MUI background.default to match the body gradient/color
       sx={{ bgcolor: "background.default" }}
     >

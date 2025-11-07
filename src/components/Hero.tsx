@@ -53,9 +53,8 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 4 + 1;
-        this.color = `hsl(${40 + Math.random() * 40}, 100%, ${
-          50 + Math.random() * 30
-        }%)`;
+        this.color = `hsl(${40 + Math.random() * 40}, 100%, ${50 + Math.random() * 30
+          }%)`;
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 3 + 1.2; // 💨 илүү зөөлөн дэлбэрэлт
         this.speedX = Math.cos(angle) * speed;
@@ -166,7 +165,13 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 letterSpacing: "4px",
                 textTransform: "uppercase",
                 color: "#FFD700",
-                textShadow: "0 0 20px rgba(255, 215, 0, 0.4)",
+
+                background:
+                  "linear-gradient(90deg, #FFD700 0%, #FFB300 30%, #FFF7C0 50%, #FFD700 70%, #FFB300 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textShadow:
+                  "0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,165,0,0.4), 2px 2px 4px rgba(0,0,0,0.6)",
               }}
             >
               Happy New Year
@@ -214,8 +219,11 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
               variant="contained"
               component="a"
               href="https://forms.office.com/r/77iw83zDMv"
+
               target="_blank"
               sx={{
+                position: "relative",
+                overflow: "hidden",
                 background: "linear-gradient(90deg, #FFD700, #FFA500)",
                 color: "#000",
                 fontWeight: 700,
@@ -223,16 +231,33 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 px: 4,
                 py: 1.5,
                 borderRadius: "9999px",
-                boxShadow: "0 0 20px rgba(255, 215, 0, 0.5)",
+                boxShadow: "0 0 20px rgba(255, 215, 0, 0.4)",
+                marginBottom: 4,
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  transform: "scale(1.05)",
+                  transform: "scale(1.06)",
                   boxShadow: "0 0 30px rgba(255, 215, 0, 0.8)",
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "100%",
+                    height: "100%",
+                    background:
+                      "linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.1) 100%)",
+                    animation: "shimmer 1.5s forwards",
+                  },
+                },
+                "@keyframes shimmer": {
+                  "0%": { left: "-100%" },
+                  "100%": { left: "100%" },
                 },
               }}
             >
               Бүртгүүлэх
             </Button>
+
           </motion.div>
         </Stack>
       </Container>

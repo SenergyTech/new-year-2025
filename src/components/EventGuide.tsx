@@ -10,7 +10,7 @@ export default function EventGuide() {
       {/* VENUE GUIDE PANEL - Styled as a Gatsby Panel */}
       <Box
         // Remove generic bg-white/dark-bg-gray-800 classes
-        className="w-full p-6 rounded-lg shadow-xl"
+        className=" p-6 rounded-lg shadow-xl mx-10 mb-10"
         sx={{
           // Apply Gatsby Paper styling: rich dark background, gold border, deep shadow
           bgcolor: "background.paper",

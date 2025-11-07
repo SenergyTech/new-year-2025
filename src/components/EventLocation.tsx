@@ -52,7 +52,7 @@ export default function EventLocation({
   return (
     <Box
       component="section"
-      className="py-16"
+      className="px-10 py-10"
       // Use theme's default background and text colors
       sx={{ bgcolor: "primary.main" }}
     >
@@ -70,11 +70,11 @@ export default function EventLocation({
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={4}
-          className="items-start md:items-stretch"
+          className="items-center md:items-stretch"
         >
           {/* LEFT COLUMN: Venue Info & Details - Styled as a Gatsby Panel */}
           <Box
-            className="flex-1 p-6 rounded-lg shadow-xl"
+            className=" p-6 rounded-sm shadow-xl"
             sx={{
               // Use background.paper and custom border/shadow for Gatsby look
               bgcolor: "background.paper",
@@ -94,7 +94,6 @@ export default function EventLocation({
               >
                 {venue.name}
               </Typography>
-
               {/* Date, Time, and Address blocks are now styled with theme colors */}
               <Stack direction="row" spacing={2} alignItems="center">
                 <CalendarIcon color="primary" /> {/* Gold icon */}
@@ -121,7 +120,7 @@ export default function EventLocation({
               </Stack>
 
               {/* Address */}
-              <Stack direction="row" spacing={2} alignItems="flex-start">
+              <Stack direction="row" spacing={2} >
                 <MapIcon color="primary" sx={{ mt: 0.5 }} /> {/* Gold icon */}
                 <Box>
                   <Typography
@@ -154,7 +153,7 @@ export default function EventLocation({
 
           {/* RIGHT COLUMN: Map Iframe Container - Styled as a luxurious frame */}
           <Box
-            className="flex-1 w-full h-80 md:h-auto rounded-lg overflow-hidden shadow-2xl"
+            className="  md:h-auto rounded-md overflow-hidden shadow-2xl"
             sx={{
               // Frame the map with the theme's border and shadow
               border: theme.deco.panelBorder,
