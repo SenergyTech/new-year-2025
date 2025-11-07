@@ -121,16 +121,20 @@ const Countdown: React.FC<CountdownProps> = ({ to_date }) => {
 
   // Render the countdown timer
   return (
-    <Stack
-      direction="row"
-      spacing={{ xs: 1, sm: 2 }} // Use MUI's theme-aware spacing
-      className="flex-wrap justify-center" // Use Tailwind for layout
-    >
-      {renderTimeBlock("Days", days)}
-      {renderTimeBlock("Hours", pad(hours))}
-      {renderTimeBlock("Minutes", pad(minutes))}
-      {renderTimeBlock("Seconds", pad(seconds))}
-    </Stack>
+ <Box
+  className="grid justify-center gap-4"
+  sx={{
+    gridTemplateColumns: {
+      xs: "repeat(2, minmax(80px, 1fr))", // phone дээр 2 багана
+      sm: "repeat(4, minmax(80px, 1fr))", // том дэлгэц дээр 4 багана
+    },
+  }}
+>
+  {renderTimeBlock("Days", days)}
+  {renderTimeBlock("Hours", pad(hours))}
+  {renderTimeBlock("Minutes", pad(minutes))}
+  {renderTimeBlock("Seconds", pad(seconds))}
+</Box>
   );
 };
 

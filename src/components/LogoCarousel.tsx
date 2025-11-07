@@ -46,9 +46,9 @@ export default function LogoCarousel() {
             <Box
               key={i}
               className="
-                mx-8 h-24 w-40 shrink-0 
+                mx-8 h-24 w-40 
                 flex items-center justify-center 
-                grayscale opacity-75 hover:grayscale-0 hover:opacity-100
+                  hover:grayscale-0 hover:opacity-100
                 transition-all duration-300
               "
               // 🚨 Apply Gatsby Theme Styling via SX

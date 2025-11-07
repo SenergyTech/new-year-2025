@@ -2,7 +2,7 @@ import mmseGreenBuildingLogo from "../assets/MMS Green Building Logo.png";
 import { Box } from "@mui/material";
 
 export default function Header() {
-  const logoClass = "h-12 w-auto object-contain mx-2 sm:h-16";
+  const logoClass = "h-12 w-auto object-contain mx-2 mt-10 sm:h-16";
 
   return (
     <Box
