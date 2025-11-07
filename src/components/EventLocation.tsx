@@ -70,11 +70,11 @@ export default function EventLocation({
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={4}
-          className="items-center md:items-stretch"
+          className="items-center lg:items-stretch lg:p-10 lg:justify-center"
         >
           {/* LEFT COLUMN: Venue Info & Details - Styled as a Gatsby Panel */}
           <Box
-            className=" p-6 rounded-sm shadow-xl"
+            className="lg:w-1/2 lg:py-10 lg:px-10  p-6 rounded-sm shadow-xl"
             sx={{
               // Use background.paper and custom border/shadow for Gatsby look
               bgcolor: "background.paper",
@@ -153,7 +153,7 @@ export default function EventLocation({
 
           {/* RIGHT COLUMN: Map Iframe Container - Styled as a luxurious frame */}
           <Box
-            className="  md:h-auto rounded-md overflow-hidden shadow-2xl"
+            className="lg:w-1/2  md:h-auto rounded-md overflow-hidden shadow-2xl"
             sx={{
               // Frame the map with the theme's border and shadow
               border: theme.deco.panelBorder,
@@ -161,10 +161,10 @@ export default function EventLocation({
               borderRadius: 4,
             }}
           >
-            <Box className="w-full h-full">
+            <Box className="w-full h-full bg-black ">
               <iframe
                 src={mapIframeSrc}
-                className="w-full h-full border-0"
+                className="w-full h-full border border-black shadow shadow-white rounded-3xl"
                 loading="lazy"
                 title="Event Venue Map"
                 allowFullScreen={true}
