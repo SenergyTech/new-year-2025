@@ -16,10 +16,15 @@
   animation: scroll 60s linear infinite;
 }
 
-body {
+html,body {
+ 
   user-select: none;
   -webkit-user-select: none;
   background-color: black;
+  overflow-x: hidden;
+ 
+ 
+
 }
 
 /* === Gentle Gold Snow (3 layers, soft & dense) === */

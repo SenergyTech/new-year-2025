@@ -7,14 +7,31 @@ import { useEffect, useRef } from "react";
 export default function Hero({ eventDate }: { eventDate: Date }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  /* --- Zoom disable --- */
+  useEffect(() => {
+    const disableZoom = (e: WheelEvent) => {
+      if (e.ctrlKey) e.preventDefault();
+    };
+    const disableKeyZoom = (e: KeyboardEvent) => {
+      if (e.ctrlKey && ["+", "-", "=", "0"].includes(e.key)) e.preventDefault();
+    };
+    window.addEventListener("wheel", disableZoom, { passive: false });
+    window.addEventListener("keydown", disableKeyZoom);
+    return () => {
+      window.removeEventListener("wheel", disableZoom);
+      window.removeEventListener("keydown", disableKeyZoom);
+    };
+  }, []);
+
+  /* --- Fireworks animation --- */
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
     let particles: any[] = [];
     let animationFrame: number;
+    let running = true;
 
-    // === Canvas resize ===
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -36,22 +53,24 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 4 + 1;
-        this.color = `hsl(${40 + Math.random() * 40}, 100%, ${50 + Math.random() * 30}%)`;
+        this.color = `hsl(${40 + Math.random() * 40}, 100%, ${
+          50 + Math.random() * 30
+        }%)`;
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 1 + 1.5;   // 💨 илүү зөөлөн дэлбэрэлт
+        const speed = Math.random() * 3 + 1.2; // 💨 илүү зөөлөн дэлбэрэлт
         this.speedX = Math.cos(angle) * speed;
         this.speedY = Math.sin(angle) * speed;
-        this.life = 120 + Math.random() * 80;    // ⏳ урт нас
+        this.life = 150 + Math.random() * 80; // ⏳ урт нас
         this.opacity = 1;
       }
 
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        this.speedY += 0.03;                     // 🌍 бага gravity
-        this.size *= 0.5;                       // аажим shrink
+        this.speedY += 0.03;
+        this.size *= 0.98;
         this.life--;
-        this.opacity -= 0.008;                   // 🕯 аажим бүдгэрэлт
+        this.opacity -= 0.006; // 🕯 удаан бүдгэрнэ
       }
 
       draw(ctx: CanvasRenderingContext2D) {
@@ -69,9 +88,8 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
     };
 
     const animate = () => {
-      // canvas-ыг бүрэн арчих (transparent clear)
+      if (!running) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       particles.forEach((p, i) => {
         p.update();
         p.draw(ctx);
@@ -85,12 +103,14 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
     window.addEventListener("click", handleClick);
 
     return () => {
+      running = false;
       cancelAnimationFrame(animationFrame);
       window.removeEventListener("click", handleClick);
       window.removeEventListener("resize", resize);
     };
   }, []);
 
+  /* --- Hero Layout --- */
   return (
     <Box
       sx={{
@@ -102,7 +122,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
       }}
       className="mt-10 text-center"
     >
-      {/* === Golden Snowfall === */}
+      {/* Golden Snowfall */}
       <div
         className="snowfall"
         style={{
@@ -118,7 +138,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
         <div className="layer l4"></div>
       </div>
 
-      {/* === Fireworks Canvas === */}
+      {/* Fireworks Canvas */}
       <canvas
         ref={canvasRef}
         style={{
@@ -129,7 +149,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
         }}
       />
 
-      {/* === Main Content === */}
+      {/* Main Content */}
       <Container sx={{ position: "relative", zIndex: 3 }}>
         <Stack spacing={4} alignItems="center">
           <motion.div
@@ -139,7 +159,6 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
           >
             <Typography
               variant="h2"
-              component="h1"
               sx={{
                 fontWeight: 100,
                 fontFamily: "'Monoton', cursive",
@@ -150,9 +169,9 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 textShadow: "0 0 20px rgba(255, 215, 0, 0.4)",
               }}
             >
-              Шинэ жилийн Урилга
+              Happy New Year
               <br />
-              2025
+              2026
             </Typography>
           </motion.div>
 
@@ -168,6 +187,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 color: "#e8e8e8",
                 fontFamily: "'Metropolis1920', serif",
                 lineHeight: 1.4,
+                px: 2,
               }}
             >
               Хамтдаа шинэ жилийн баярыг угтан, тансаг оройн зоог, хөгжилтэй уур

@@ -86,10 +86,12 @@ const Countdown: React.FC<CountdownProps> = ({ to_date }) => {
         variant="h3"
         component="div"
         // Use monospace font (if defined in theme) and Gatsby gold for numbers
-        className="font-mono font-extrabold"
+
+        className=" font-extrabold font-serif hover:shadow-xl"
         sx={{
           color: "primary.main",
-          fontSize: { xs: "1.5rem", sm: "2.25rem" },
+          fontSize: { xs: "1.5rem", sm: "2.5rem" },
+        
         }}
       >
         {value}
@@ -124,9 +126,10 @@ const Countdown: React.FC<CountdownProps> = ({ to_date }) => {
  <Box
   className="grid justify-center gap-4"
   sx={{
+    
     gridTemplateColumns: {
-      xs: "repeat(2, minmax(80px, 1fr))", // phone дээр 2 багана
-      sm: "repeat(4, minmax(80px, 1fr))", // том дэлгэц дээр 4 багана
+      xs: "repeat(2, minmax(100px, 1fr))", // phone дээр 2 багана
+      sm: "repeat(4, minmax(100px, 1fr))", // том дэлгэц дээр 4 багана
     },
   }}
 >
