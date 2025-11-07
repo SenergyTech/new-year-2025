@@ -129,3 +129,28 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .snowfall .layer { animation: none; }
 }
+.sparkle-burst {
+  position: fixed;
+  pointer-events: none;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #ffd700 0%, rgba(255, 215, 0, 0) 70%);
+  border-radius: 50%;
+  animation: sparkle-burst 10s ease-out forwards;
+  z-index: 50;
+}
+
+@keyframes sparkle-burst {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(3.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(6);
+    opacity: 0;
+  }
+}

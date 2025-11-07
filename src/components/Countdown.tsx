@@ -130,10 +130,10 @@ const Countdown: React.FC<CountdownProps> = ({ to_date }) => {
     },
   }}
 >
-  {renderTimeBlock("Days", days)}
-  {renderTimeBlock("Hours", pad(hours))}
-  {renderTimeBlock("Minutes", pad(minutes))}
-  {renderTimeBlock("Seconds", pad(seconds))}
+  {renderTimeBlock("Өдөр", days)}
+  {renderTimeBlock("Цаг", pad(hours))}
+  {renderTimeBlock("Минут", pad(minutes))}
+  {renderTimeBlock("Секунд", pad(seconds))}
 </Box>
   );
 };
