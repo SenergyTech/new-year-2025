@@ -3,7 +3,7 @@ import LogoCarousel from "./components/LogoCarousel";
 import { Box } from "@mui/material";
 import EventLocation from "./components/EventLocation";
 import DressCode from "./components/DressCode";
-import EventGuide from "./components/EventGuide";
+// import EventGuide from "./components/EventGuide";
 import Header from "./components/Header";
 
 function App() {
