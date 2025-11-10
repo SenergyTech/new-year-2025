@@ -21,7 +21,7 @@ function App() {
         {/* You can add more sections here */}
         <EventLocation eventDate={eventDate} />
         <DressCode />
-        <EventGuide />
+        {/* <EventGuide /> */}
       </Box>
     </>
   );

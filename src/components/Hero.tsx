@@ -237,7 +237,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 fontSize: {
                   xs: "1rem",   // 📱 small screens (утас)
                   sm: "1.1rem", // tablet
-                  md: "1.6rem" // desktop
+                  md: "1.4rem" // desktop
                 },
                 textAlign: "center",
               }}
