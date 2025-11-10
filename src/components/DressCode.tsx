@@ -31,16 +31,8 @@ export default function DressCodeSimple() {
         >
           Дресс код: Great Gatsby
         </Typography>
-        <Typography
-          variant="h6"
-          sx={{
-            color: "text.secondary",
-            fontStyle: "italic",
-            mt: 1,
-          }}
-        >
-          “Roaring 20s”-ийн Америкийн мөрөөдөл
-        </Typography>
+     
+       
       </Box>
 
       {/* --- Хоёр хуваасан хэсэг --- */}
