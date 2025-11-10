@@ -66,15 +66,7 @@ export default function DressCodeSimple() {
           >
             Эрчүүд
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: "text.secondary",
-              mb: 2,
-            }}
-          >
-            Смокинг, гурван хэсэгтэй костюм, федора малгай, зангиа эсвэл хантаазтай хослол.
-          </Typography>
+         
 
           <Box
             sx={{
@@ -124,15 +116,7 @@ export default function DressCodeSimple() {
           >
             Эмэгтэйчүүд
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: "text.secondary",
-              mb: 2,
-            }}
-          >
-            Флэппер даашинз, өдөн ороолт, урт бээлий, сувдан зүүлт, гялалзсан урт даашинз.
-          </Typography>
+         
 
           <Box
             sx={{
