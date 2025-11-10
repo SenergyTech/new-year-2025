@@ -29,7 +29,7 @@ export default function DressCodeSimple() {
               "0 0 1px rgba(255,215,0,0.4), 0 0 25px rgba(255,165,0,0.2)",
           }}
         >
-          Дресс код: Great Gatsby
+          Dress Code: Elegant & Glamorous
         </Typography>
      
        
@@ -56,16 +56,7 @@ export default function DressCodeSimple() {
             textAlign: "center",
           }}
         >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "secondary.main",
-              mb: 2,
-              fontWeight: 600,
-            }}
-          >
-            Эрчүүд
-          </Typography>
+         
          
 
           <Box
@@ -84,6 +75,7 @@ export default function DressCodeSimple() {
                 sx={{
                   width: "100%",
                   height: 500,
+                  
                   objectFit: "cover",
                   borderRadius: 2,
                   boxShadow: "0 0 10px rgba(0,0,0,0.4)",
@@ -106,16 +98,7 @@ export default function DressCodeSimple() {
             textAlign: "center",
           }}
         >
-          <Typography
-            variant="h5"
-            sx={{
-              color: "secondary.main",
-              mb: 2,
-              fontWeight: 600,
-            }}
-          >
-            Эмэгтэйчүүд
-          </Typography>
+         
          
 
           <Box

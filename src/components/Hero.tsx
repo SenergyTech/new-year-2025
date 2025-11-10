@@ -210,9 +210,8 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                   "0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,165,0,0.4), 2px 2px 4px rgba(0,0,0,0.6)",
               }}
             >
-              Happy New Year
-              <br />
-              2026
+              24K Celebration
+ 
             </Typography>
           </motion.div>
 
