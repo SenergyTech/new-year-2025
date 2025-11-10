@@ -110,12 +110,12 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
   const handleAddToCalendar = () => {
     const title = "24K Celebration — New Year Party";
     const description =
-      "Тансаг оройн зоог, хөгжилтэй уур амьсгал дунд мартагдашгүй үдшийг хамтдаа. Дресскод: 24K Gatsby ✨";
+      "Dress Code:  Elegant & Glamorous ✨";
     const location = "King Ballroom, 4th floor";
 
     // Эвентийн хугацаа: prop-аас эхлэх, +3 цаг үргэлжилнэ (хүсвэл өөрчил)
     const startLocal = new Date(eventDate);
-    const endLocal = new Date(startLocal.getTime() + 3 * 60 * 60 * 1000);
+    const endLocal = new Date(startLocal.getTime() + 6 * 60 * 60 * 1000);
 
     const startForLink = toLocalISOForOutlook(startLocal); // YYYY-MM-DDTHH:mm:ss
     const endForLink = toLocalISOForOutlook(endLocal);

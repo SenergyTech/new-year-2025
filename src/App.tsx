@@ -7,7 +7,7 @@ import DressCode from "./components/DressCode";
 import Header from "./components/Header";
 
 function App() {
-  const eventDate = new Date(2025, 11, 19, 17, 30, 0);
+  const eventDate = new Date(2025, 11, 19, 18, 0, 0);
 
   return (
     <>
