@@ -2,12 +2,13 @@
 import { createTheme } from "@mui/material/styles";
 
 /** Brand colors */
-const ink = "#0A0A0A"; // near-black page background
-const inkPaper = "#111111"; // panels
-const gold = "#D4AF37"; // primary gold
-const gold2 = "#E0C167"; // light accent gold
-const ivory = "#F7F2E4"; // warm off-white
+const ink = "#0A0A0A";
+const inkPaper = "#111111";
+const gold = "#D4AF37";
+const gold2 = "#E0C167";
+const ivory = "#F7F2E4";
 
+// --- type өргөтгөл ---
 declare module "@mui/material/styles" {
   interface Theme {
     deco: {
@@ -25,40 +26,28 @@ declare module "@mui/material/styles" {
   }
 }
 
+// --- color-mix байхгүй хувилбар ---
 export const gatsbyTheme = createTheme({
   palette: {
-    // Keep MUI in dark mode so default contrasts are correct,
-    // but we won't offer any toggle.
     mode: "dark",
     primary: { main: gold, contrastText: ink },
     secondary: { main: gold2, contrastText: ink },
     background: { default: ink, paper: inkPaper },
     text: { primary: ivory, secondary: "#E6DBC2" },
-    divider: "color-mix(in oklab, #D4AF37, transparent 65%)",
+    divider: "rgba(212,175,55,0.35)", // ✅ color-mix → rgba
   },
   deco: {
-    hairline: "1px solid color-mix(in oklab, #D4AF37, transparent 35%)",
-    panelBorder: "1px solid color-mix(in oklab, #D4AF37, transparent 28%)",
-    goldGradient: `linear-gradient(135deg, ${gold} 0%, ${gold2} 55%, #F0E6C8 100%)`,
+    hairline: "1px solid rgba(212,175,55,0.35)",
+    panelBorder: "1px solid rgba(212,175,55,0.28)",
+    goldGradient:
+      "linear-gradient(135deg, #D4AF37 0%, #E0C167 55%, #F0E6C8 100%)",
   },
   shape: { borderRadius: 12 },
   typography: {
     fontFamily: `"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI"`,
-    h1: {
-      fontWeight: 800,
-      letterSpacing: "0.08em",
-      textTransform: "uppercase",
-    },
-    h2: {
-      fontWeight: 800,
-      letterSpacing: "0.08em",
-      textTransform: "uppercase",
-    },
-    h3: {
-      fontWeight: 800,
-      letterSpacing: "0.08em",
-      textTransform: "uppercase",
-    },
+    h1: { fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" },
+    h2: { fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" },
+    h3: { fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" },
     button: { textTransform: "none", fontWeight: 700, letterSpacing: "0.04em" },
   },
   components: {
@@ -142,9 +131,7 @@ export const gatsbyTheme = createTheme({
       },
     },
     MuiTypography: {
-      styleOverrides: {
-        h3: { color: gold2 },
-      },
+      styleOverrides: { h3: { color: gold2 } },
     },
     MuiChip: {
       styleOverrides: {

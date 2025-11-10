@@ -238,6 +238,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.9 }}>
+            {/* === Бүртгүүлэх — шар дэвсгэр + хар текст, шимертэй === */}
             <Button
               variant="contained"
               component="a"
@@ -254,20 +255,26 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 py: 1.5,
                 borderRadius: "9999px",
                 boxShadow: "0 0 20px rgba(255, 215, 0, 0.4)",
-                marginBottom: 4,
+                mb: 4,
                 transition: "all 0.3s ease",
+                // shimmer base layer
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: "-100%",
+                  width: "100%",
+                  height: "100%",
+                  background:
+                    "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
+                  transform: "translateX(0)",
+                },
                 "&:hover": {
                   transform: "scale(1.06)",
-                  boxShadow: "0 0 30px rgba(255, 215, 0, 0.8)",
+                  background: "linear-gradient(90deg, #000000, #1a1a1a)",
+                  color: "#FFD700",
+                  boxShadow: "0 0 25px rgba(255, 215, 0, 0.8)",
                   "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    top: 0,
-                    left: "-100%",
-                    width: "100%",
-                    height: "100%",
-                    background:
-                      "linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.1) 100%)",
                     animation: "shimmer 1.5s forwards",
                   },
                 },
@@ -280,36 +287,45 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
               Бүртгүүлэх
             </Button>
 
-            {/* ==== Календарт нэмэх ==== */}
+            {/* === Календарт нэмэх — хар дэвсгэр + шар текст, шимертэй === */}
             <Button
               variant="contained"
               onClick={handleAddToCalendar}
               sx={{
                 position: "relative",
                 overflow: "hidden",
-                background: "linear-gradient(90deg, #FFD600, #FFA500)",
-                color: "#fff",
+                background: "linear-gradient(90deg, #000000, #1a1a1a)",
+                color: "#FFD700",
                 fontWeight: 700,
                 fontFamily: "'Inter', sans-serif",
+                border: "0.5px solid #FFD700",
                 px: 4,
                 py: 1.5,
                 ml: 2,
                 borderRadius: "9999px",
-                boxShadow: "0 0 20px rgba(255, 15, 0, 0.4)",
+                boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
                 mb: 4,
                 transition: "all 0.3s ease",
+                // shimmer base layer
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: "-100%",
+                  width: "100%",
+                  height: "100%",
+                 
+                  background:
+                    "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
+                  transform: "translateX(0)",
+                },
                 "&:hover": {
                   transform: "scale(1.06)",
+                  background: "linear-gradient(90deg, #FFD700, #FFA500)",
+                  color: "#000",
+                  border: "0.5px solid #000",
                   boxShadow: "0 0 30px rgba(255, 215, 0, 0.8)",
                   "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    top: 0,
-                    left: "-100%",
-                    width: "100%",
-                    height: "100%",
-                    background:
-                      "linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,25,0.6) 50%, rgba(255,255,255,0.1) 100%)",
                     animation: "shimmer 1.5s forwards",
                   },
                 },
@@ -321,6 +337,9 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
             >
               Календарт нэмэх
             </Button>
+
+
+
           </motion.div>
         </Stack>
       </Container>

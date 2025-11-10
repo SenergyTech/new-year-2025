@@ -5,55 +5,52 @@ import {
   Stack,
   Button,
   useTheme,
-} from "@mui/material"; // 👈 Import useTheme
+} from "@mui/material";
 import MapIcon from "@mui/icons-material/LocationOn";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import CalendarIcon from "@mui/icons-material/Event";
 
 interface VenueSectionProps {
-  // Optional prop to pass the specific date/time for display
   eventDate?: Date;
 }
 
 export default function EventLocation({
   eventDate: eventDateTime,
 }: VenueSectionProps) {
-  const theme = useTheme(); // 👈 Access the Gatsby theme
+  const theme = useTheme();
 
-  // Example Venue Details
+  // Жишээ байршлын мэдээлэл
   const venue = {
     name: "King Ballroom",
-    addressLine1: "Mahatma Gandhi St",
-    addressLine2: "HUD - 15 khoroo, Ulaanbaatar 17011",
+    addressLine1: "Махатма Гандигийн гудамж",
+    addressLine2: "ХУД - 15-р хороо, Улаанбаатар 17011",
     mapLink: "https://maps.app.goo.gl/LRn4WywdKQPBKgz36",
   };
 
   const mapIframeSrc =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.2253036407174!2d106.9144616768891!3d47.90374607121858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d969300519532ad%3A0xeb3acf4c546e6bd8!2sKing%20Ballroom!5e1!3m2!1sen!2smn!4v1762323869203!5m2!1sen!2smn";
 
-  // Format the date for display
   const formattedTime = eventDateTime
     ? eventDateTime.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       })
-    : "6:00 PM";
+    : "18:00";
 
   const formattedDate = eventDateTime
-    ? eventDateTime.toLocaleDateString("en-US", {
+    ? eventDateTime.toLocaleDateString("mn-MN", {
         weekday: "long",
         year: "numeric",
         month: "long",
         day: "numeric",
       })
-    : "Friday, December 19, 2025";
+    : "2025 оны 12-р сарын 19, Баасан гараг";
 
   return (
     <Box
       component="section"
       className="px-10 py-10"
-      // Use theme's default background and text colors
       sx={{ bgcolor: "primary.main" }}
     >
       <Container maxWidth="lg">
@@ -64,7 +61,7 @@ export default function EventLocation({
           className="text-center font-bold mb-12"
           sx={{ color: "primary.contrastText" }}
         >
-          Event Location
+           Байршил
         </Typography>
 
         <Stack
@@ -72,16 +69,15 @@ export default function EventLocation({
           spacing={4}
           className="items-center lg:items-stretch lg:p-10 lg:justify-center"
         >
-          {/* LEFT COLUMN: Venue Info & Details - Styled as a Gatsby Panel */}
+          {/* Зүүн багана: Мэдээлэл */}
           <Box
-            className="lg:w-1/2 lg:py-10 lg:px-10   p-6 rounded-sm shadow-xl"
+            className="lg:w-1/2 lg:py-10 lg:px-10 p-6 rounded-sm shadow-xl"
             sx={{
-              // Use background.paper and custom border/shadow for Gatsby look
               bgcolor: "background.paper",
-              borderLeft: `4px solid ${theme.palette.secondary.main}`, // Gold accent bar
-              border: theme.deco.panelBorder, // Gold border on all sides
-              boxShadow: theme.shadows[12], // Prominent shadow
-              borderRadius: 4, // Theme's radius
+              borderLeft: `4px solid ${theme.palette.secondary.main}`,
+              border: theme.deco.panelBorder,
+              boxShadow: theme.shadows[12],
+              borderRadius: 4,
             }}
           >
             <Stack spacing={3}>
@@ -89,14 +85,14 @@ export default function EventLocation({
                 variant="h4"
                 component="h3"
                 className="font-semibold"
-                // Venue name color is secondary gold
                 sx={{ color: "secondary.main" }}
               >
                 {venue.name}
               </Typography>
-              {/* Date, Time, and Address blocks are now styled with theme colors */}
+
+              {/* Огноо */}
               <Stack direction="row" spacing={2} alignItems="center">
-                <CalendarIcon color="primary" /> {/* Gold icon */}
+                <CalendarIcon color="primary" />
                 <Box>
                   <Typography
                     variant="body1"
@@ -107,21 +103,22 @@ export default function EventLocation({
                 </Box>
               </Stack>
 
+              {/* Цаг */}
               <Stack direction="row" spacing={2} alignItems="center">
-                <ScheduleIcon color="primary" /> {/* Gold icon */}
+                <ScheduleIcon color="primary" />
                 <Box>
                   <Typography
                     variant="body1"
                     sx={{ color: "text.primary", fontWeight: 500 }}
                   >
-                    Doors Open at {formattedTime}
+                    Хаалга нээгдэх цаг: {formattedTime}
                   </Typography>
                 </Box>
               </Stack>
 
-              {/* Address */}
-              <Stack direction="row" spacing={2} >
-                <MapIcon color="primary" sx={{ mt: 0.5 }} /> {/* Gold icon */}
+              {/* Хаяг */}
+              <Stack direction="row" spacing={2}>
+                <MapIcon color="primary" sx={{ mt: 0.5 }} />
                 <Box>
                   <Typography
                     variant="body1"
@@ -135,10 +132,10 @@ export default function EventLocation({
                 </Box>
               </Stack>
 
-              {/* Directions Button */}
+              {/* Зам заалгах товч */}
               <Button
                 variant="contained"
-                color="primary" // Button styling is handled by MuiButton overrides in theme.ts
+                color="primary"
                 size="large"
                 startIcon={<DirectionsIcon />}
                 href={venue.mapLink}
@@ -146,16 +143,15 @@ export default function EventLocation({
                 rel="noopener noreferrer"
                 className="mt-4 self-start"
               >
-                Get Directions
+                Зам заалгах
               </Button>
             </Stack>
           </Box>
 
-          {/* RIGHT COLUMN: Map Iframe Container - Styled as a luxurious frame */}
+          {/* Баруун багана: Газрын зураг */}
           <Box
-            className="lg:w-1/2  md:h-auto rounded-md overflow-hidden shadow-2xl"
+            className="lg:w-1/2 md:h-auto rounded-md overflow-hidden shadow-2xl"
             sx={{
-              // Frame the map with the theme's border and shadow
               border: theme.deco.panelBorder,
               boxShadow: theme.shadows[12],
               borderRadius: 4,
@@ -164,9 +160,9 @@ export default function EventLocation({
             <Box className="w-full h-full bg-black p-4">
               <iframe
                 src={mapIframeSrc}
-                className="w-full h-full  shadow-md shadow-gray-500 rounded-4xl"
+                className="w-full h-full shadow-md shadow-gray-500 rounded-4xl"
                 loading="lazy"
-                title="Event Venue Map"
+                title="Үйл ажиллагаа болох газрын зураг"
                 allowFullScreen={true}
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>

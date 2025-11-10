@@ -5,87 +5,150 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  useTheme, // 👈 Import useTheme
+  useTheme,
 } from "@mui/material";
 import DiamondIcon from "@mui/icons-material/Diamond";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 
 export default function DressCode() {
-  const theme = useTheme(); // Access the Gatsby theme
+  const theme = useTheme();
 
   return (
     <Box
       component="section"
-      className="py-12 mx-10" // Increased vertical padding for more space
-      // Use MUI background.default to match the body gradient/color
-      sx={{ bgcolor: "background.default" }}
+      className="py-16 px-10"
+      sx={{
+        bgcolor: "background.default",
+        position: "relative",
+      }}
     >
-      {/* NOTE: The "Essential Event Information" title is likely handled in the 
-        parent component (EventInformation.tsx) if this DressCode is a child. 
-        I've commented it out here to avoid duplication if it's nested.
-      */}
-      <Box className="text-center py-5">
+      {/* --- Гарчиг хэсэг --- */}
+      <Box className="text-center mb-10">
         <Typography
           variant="h3"
           component="h2"
-          className=" text-center font-semibold mb-4 "
-          sx={{ color: "secondary.main" }}
+          className="font-bold tracking-wide mb-3"
+          sx={{
+            color: "secondary.main",
+            fontSize: { xs: "2.25rem", md: "3rem" },
+            textShadow:
+              "0 0 1px rgba(255, 215, 0, 0.4), 0 0 25px rgba(255, 165, 0, 0.2)",
+          }}
         >
-          Dress Code: Great Gatsby
+          Дресс код: Great Gatsby
         </Typography>
-
         <Typography
-          variant="body1"
-          className="mb-4"
-          sx={{ color: "secondary.main" }}
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            fontStyle: "italic",
+            letterSpacing: "0.5px",
+          }}
         >
-          American Dream of Roaring 20s
+          “Roaring 20s”-ийн Америкийн мөрөөдөл
         </Typography>
       </Box>
 
-      {/* DRESS CODE PANEL (Styled with MUI Paper/Card properties) */}
+      {/* --- Дресс кодын панель --- */}
       <Box
-        // Remove bg-white/dark:bg-gray-800 Tailwind classes
-        className="w-full px-6 py-3 shadow-xl"
+        className="w-full mx-auto max-w-5xl mb-5 p-8 shadow-md"
         sx={{
-          // Use background.paper, border, and boxShadow defined in theme.ts for MuiPaper
           bgcolor: "background.paper",
-          border: theme.deco.panelBorder,
-          boxShadow: theme.shadows[12], // Use a more prominent shadow
-          borderRadius: 4, // Ensures theme's shape.borderRadius is used (12px by default)
+          
+         
+          boxShadow:
+            "0 0 5px rgba(255, 215, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.1)",
+          borderRadius: 2,
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            borderRadius: 2,
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0))",
+            pointerEvents: "none",
+          },
         }}
       >
         <List disablePadding>
-          <ListItem disableGutters>
+          {/* Эрчүүдийн хувцаслалт */}
+          <ListItem
+            disableGutters
+            sx={{
+              mb: 3,
+              borderBottom: `1px solid ${theme.palette.divider}`,
+              pb: 2,
+            }}
+          >
             <ListItemIcon>
-              {/* Use primary gold color for the accent icons */}
-              <LocalBarIcon color="primary" />
+              <LocalBarIcon
+                sx={{
+                  color: theme.palette.secondary.main,
+                  fontSize: 36,
+                }}
+              />
             </ListItemIcon>
             <ListItemText
-              primary="For Gentlemen"
-              secondary="Tuxedos, three-piece suits, fedoras, bow ties, or vests."
-              // The explicit text.primary/secondary fix remains critical for dark mode
+              primary="Эрчүүдэд"
+              secondary="Смокинг, гурван хэсэгтэй костюм, федора малгай, зангиа эсвэл хантаазтай хослол."
               sx={{
-                "& .MuiListItemText-primary": { color: "text.primary" },
-                "& .MuiListItemText-secondary": { color: "text.secondary" },
+                "& .MuiListItemText-primary": {
+                  color: theme.palette.text.primary,
+                  fontWeight: 600,
+                  fontSize: "1.1rem",
+                },
+                "& .MuiListItemText-secondary": {
+                  color: theme.palette.text.secondary,
+                  mt: 0.5,
+                  lineHeight: 1.6,
+                },
               }}
             />
           </ListItem>
+
+          {/* Хатагтай нарын хувцаслалт */}
           <ListItem disableGutters>
             <ListItemIcon>
-              <DiamondIcon color="primary" />
+              <DiamondIcon
+                sx={{
+                  color: theme.palette.secondary.main,
+                  fontSize: 36,
+                }}
+              />
             </ListItemIcon>
             <ListItemText
-              primary="For Ladies"
-              secondary="Flapper dresses (fringe!), feather boas, long gloves, pearl necklaces, or sleek, beaded gowns."
+              primary="Хатагтай нартаа"
+              secondary="Флэппер даашинз (fringe чимэглэлтэй), өдөн ороолт, урт бээлий, сувдан зүүлт, эсвэл гялалзсан гоёлтой урт даашинз."
               sx={{
-                "& .MuiListItemText-primary": { color: "text.primary" },
-                "& .MuiListItemText-secondary": { color: "text.secondary" },
+                "& .MuiListItemText-primary": {
+                  color: theme.palette.text.primary,
+                  fontWeight: 600,
+                  fontSize: "1.1rem",
+                },
+                "& .MuiListItemText-secondary": {
+                  color: theme.palette.text.secondary,
+                  mt: 0.5,
+                  lineHeight: 1.6,
+                },
               }}
             />
           </ListItem>
         </List>
       </Box>
+
+      {/* --- Доод тайлбар / чимэглэл --- */}
+      <Typography
+        variant="body2"
+        className="text-center mt-8"
+        sx={{
+          color: "text.secondary",
+          fontStyle: "italic",
+          letterSpacing: "0.3px",
+        }}
+      >
+        Тансаг, дэгжин, гялалзсан — 1920-иод оны уур амьсгалыг сэргээе ✨
+      </Typography>
     </Box>
   );
 }
