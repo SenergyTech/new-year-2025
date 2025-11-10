@@ -1,38 +1,28 @@
-import {
-  Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  useTheme,
-} from "@mui/material";
-import DiamondIcon from "@mui/icons-material/Diamond";
-import LocalBarIcon from "@mui/icons-material/LocalBar";
+import { Box, Typography } from "@mui/material";
+import men1 from "../assets/men1.jpg";
+import men2 from "../assets/men2.jpg";
+import women1 from "../assets/women1.jpg";
+import women2 from "../assets/women2.jpg";
 
-export default function DressCode() {
-  const theme = useTheme();
-
+export default function DressCodeSimple() {
   return (
     <Box
-      component="section"
-      className="py-16 px-10"
       sx={{
         bgcolor: "background.default",
-        position: "relative",
+        py: 10,
+        px: { xs: 3, md: 8 },
       }}
     >
-      {/* --- Гарчиг хэсэг --- */}
-      <Box className="text-center mb-10">
+      {/* --- Гарчиг --- */}
+      <Box sx={{ textAlign: "center", mb: 8 }}>
         <Typography
           variant="h3"
-          component="h2"
-          className="font-bold tracking-wide mb-3"
           sx={{
             color: "secondary.main",
-            fontSize: { xs: "2.25rem", md: "3rem" },
+            fontWeight: 800,
+            fontSize: { xs: "2rem", md: "3rem" },
             textShadow:
-              "0 0 1px rgba(255, 215, 0, 0.4), 0 0 25px rgba(255, 165, 0, 0.2)",
+              "0 0 1px rgba(255,215,0,0.4), 0 0 25px rgba(255,165,0,0.2)",
           }}
         >
           Дресс код: Great Gatsby
@@ -42,109 +32,148 @@ export default function DressCode() {
           sx={{
             color: "text.secondary",
             fontStyle: "italic",
-            letterSpacing: "0.5px",
+            mt: 1,
           }}
         >
           “Roaring 20s”-ийн Америкийн мөрөөдөл
         </Typography>
       </Box>
 
-      {/* --- Дресс кодын панель --- */}
+      {/* --- Хоёр хуваасан хэсэг --- */}
       <Box
-        className="w-full mx-auto max-w-5xl mb-5 p-8 shadow-md"
         sx={{
-          bgcolor: "background.paper",
-          
-         
-          boxShadow:
-            "0 0 5px rgba(255, 215, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.1)",
-          borderRadius: 2,
-          position: "relative",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            inset: 0,
-            borderRadius: 2,
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0))",
-            pointerEvents: "none",
-          },
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: 4,
+          justifyContent: "center",
+          alignItems: "flex-start",
         }}
       >
-        <List disablePadding>
-          {/* Эрчүүдийн хувцаслалт */}
-          <ListItem
-            disableGutters
+        {/* --- Эрчүүдийн загвар --- */}
+        <Box
+          sx={{
+            flex: 1,
+            bgcolor: "background.paper",
+            p: 3,
+            borderRadius: 2,
+            boxShadow: "0 0 5px rgba(255,215,0,0.3)",
+            textAlign: "center",
+          }}
+        >
+          <Typography
+            variant="h5"
             sx={{
-              mb: 3,
-              borderBottom: `1px solid ${theme.palette.divider}`,
-              pb: 2,
+              color: "secondary.main",
+              mb: 2,
+              fontWeight: 600,
             }}
           >
-            <ListItemIcon>
-              <LocalBarIcon
-                sx={{
-                  color: theme.palette.secondary.main,
-                  fontSize: 36,
-                }}
-              />
-            </ListItemIcon>
-            <ListItemText
-              primary="Эрчүүдэд"
-              secondary="Смокинг, гурван хэсэгтэй костюм, федора малгай, зангиа эсвэл хантаазтай хослол."
-              sx={{
-                "& .MuiListItemText-primary": {
-                  color: theme.palette.text.primary,
-                  fontWeight: 600,
-                  fontSize: "1.1rem",
-                },
-                "& .MuiListItemText-secondary": {
-                  color: theme.palette.text.secondary,
-                  mt: 0.5,
-                  lineHeight: 1.6,
-                },
-              }}
-            />
-          </ListItem>
+            Эрчүүд
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              mb: 2,
+            }}
+          >
+            Смокинг, гурван хэсэгтэй костюм, федора малгай, зангиа эсвэл хантаазтай хослол.
+          </Typography>
 
-          {/* Хатагтай нарын хувцаслалт */}
-          <ListItem disableGutters>
-            <ListItemIcon>
-              <DiamondIcon
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+              gap: 1.5,
+            }}
+          >
+            {[men1, men2].map((src, i) => (
+              <Box
+                key={i}
+                component="img"
+                src={src}
+                alt={`men-${i}`}
                 sx={{
-                  color: theme.palette.secondary.main,
-                  fontSize: 36,
+                  width: "100%",
+                  height: 500,
+                  objectFit: "cover",
+                  borderRadius: 2,
+                  boxShadow: "0 0 10px rgba(0,0,0,0.4)",
+                  transition: "transform 0.4s ease",
+                  "&:hover": { transform: "scale(1.05)" },
                 }}
               />
-            </ListItemIcon>
-            <ListItemText
-              primary="Хатагтай нартаа"
-              secondary="Флэппер даашинз (fringe чимэглэлтэй), өдөн ороолт, урт бээлий, сувдан зүүлт, эсвэл гялалзсан гоёлтой урт даашинз."
-              sx={{
-                "& .MuiListItemText-primary": {
-                  color: theme.palette.text.primary,
-                  fontWeight: 600,
-                  fontSize: "1.1rem",
-                },
-                "& .MuiListItemText-secondary": {
-                  color: theme.palette.text.secondary,
-                  mt: 0.5,
-                  lineHeight: 1.6,
-                },
-              }}
-            />
-          </ListItem>
-        </List>
+            ))}
+          </Box>
+        </Box>
+
+        {/* --- Эмэгтэйчүүдийн загвар --- */}
+        <Box
+          sx={{
+            flex: 1,
+            bgcolor: "background.paper",
+            p: 3,
+            borderRadius: 2,
+            boxShadow: "0 0 5px rgba(255,215,0,0.3)",
+            textAlign: "center",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{
+              color: "secondary.main",
+              mb: 2,
+              fontWeight: 600,
+            }}
+          >
+            Эмэгтэйчүүд
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              mb: 2,
+            }}
+          >
+            Флэппер даашинз, өдөн ороолт, урт бээлий, сувдан зүүлт, гялалзсан урт даашинз.
+          </Typography>
+
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+              gap: 1.5,
+            }}
+          >
+            {[women1, women2].map((src, i) => (
+              <Box
+                key={i}
+                component="img"
+                src={src}
+                alt={`women-${i}`}
+                sx={{
+                  width: "100%",
+                  height: 500,
+                  objectFit: "cover",
+                  borderRadius: 2,
+                  boxShadow: "0 0 10px rgba(0,0,0,0.4)",
+                  transition: "transform 0.4s ease",
+                  "&:hover": { transform: "scale(1.05)" },
+                }}
+              />
+            ))}
+          </Box>
+        </Box>
       </Box>
 
-      {/* --- Доод тайлбар / чимэглэл --- */}
+      {/* --- Доод тайлбар --- */}
       <Typography
         variant="body2"
-        className="text-center mt-8"
         sx={{
+          textAlign: "center",
+          mt: 8,
           color: "text.secondary",
           fontStyle: "italic",
-          letterSpacing: "0.3px",
         }}
       >
         Тансаг, дэгжин, гялалзсан — 1920-иод оны уур амьсгалыг сэргээе ✨
