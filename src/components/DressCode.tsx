@@ -29,11 +29,11 @@ export default function DressCodeSimple() {
               "0 0 1px rgba(255,215,0,0.4), 0 0 25px rgba(255,165,0,0.2)",
           }}
         >
-          Dress Code: <br/>
+          Dress Code: <br />
           Elegant & Glamorous
         </Typography>
-     
-       
+
+
       </Box>
 
       {/* --- Хоёр хуваасан хэсэг --- */}
@@ -57,9 +57,6 @@ export default function DressCodeSimple() {
             textAlign: "center",
           }}
         >
-         
-         
-
           <Box
             sx={{
               display: "grid",
@@ -76,7 +73,7 @@ export default function DressCodeSimple() {
                 sx={{
                   width: "100%",
                   height: 500,
-                  
+
                   objectFit: "cover",
                   borderRadius: 2,
                   boxShadow: "0 0 10px rgba(0,0,0,0.4)",
@@ -99,8 +96,8 @@ export default function DressCodeSimple() {
             textAlign: "center",
           }}
         >
-         
-         
+
+
 
           <Box
             sx={{
@@ -109,7 +106,7 @@ export default function DressCodeSimple() {
               gap: 1.5,
             }}
           >
-            {[women1, women2, women3 , women4].map((src, i) => (
+            {[women1, women2, women3, women4].map((src, i) => (
               <Box
                 key={i}
                 component="img"
@@ -140,7 +137,7 @@ export default function DressCodeSimple() {
           fontStyle: "italic",
         }}
       >
-       
+
       </Typography>
     </Box>
   );
