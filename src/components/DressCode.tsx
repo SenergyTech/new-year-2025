@@ -1,8 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import men1 from "../assets/men1.jpg";
 import men2 from "../assets/men2.jpg";
+import men3 from "../assets/men3.jpg";
+import men4 from "../assets/men4.jpg";
 import women1 from "../assets/women1.jpg";
 import women2 from "../assets/women2.jpg";
+import women3 from "../assets/women3.jpg";
+import women4 from "../assets/women4.jpg";
 
 export default function DressCodeSimple() {
   return (
@@ -87,7 +91,7 @@ export default function DressCodeSimple() {
               gap: 1.5,
             }}
           >
-            {[men1, men2].map((src, i) => (
+            {[men1, men2, men3, men4].map((src, i) => (
               <Box
                 key={i}
                 component="img"
@@ -145,7 +149,7 @@ export default function DressCodeSimple() {
               gap: 1.5,
             }}
           >
-            {[women1, women2].map((src, i) => (
+            {[women1, women2, women3 , women4].map((src, i) => (
               <Box
                 key={i}
                 component="img"
