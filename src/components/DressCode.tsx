@@ -55,6 +55,7 @@ export default function DressCodeSimple() {
             borderRadius: 2,
             boxShadow: "0 0 5px rgba(255,215,0,0.3)",
             textAlign: "center",
+            width: "100%",
           }}
         >
           <Box
@@ -72,8 +73,8 @@ export default function DressCodeSimple() {
                 alt={`men-${i}`}
                 sx={{
                   width: "100%",
-                  height: 500,
-
+                  // 💡 responsive height:
+                  height: { xs: 200, sm: 300, md: 400, lg: 500 },
                   objectFit: "cover",
                   borderRadius: 2,
                   boxShadow: "0 0 10px rgba(0,0,0,0.4)",
@@ -94,11 +95,9 @@ export default function DressCodeSimple() {
             borderRadius: 2,
             boxShadow: "0 0 5px rgba(255,215,0,0.3)",
             textAlign: "center",
+                 width: "100%",
           }}
         >
-
-
-
           <Box
             sx={{
               display: "grid",
@@ -114,7 +113,7 @@ export default function DressCodeSimple() {
                 alt={`women-${i}`}
                 sx={{
                   width: "100%",
-                  height: 500,
+                 height: { xs: 200, sm: 300, md: 400, lg: 500 },
                   objectFit: "cover",
                   borderRadius: 2,
                   boxShadow: "0 0 10px rgba(0,0,0,0.4)",
