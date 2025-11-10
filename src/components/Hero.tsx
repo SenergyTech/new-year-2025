@@ -53,25 +53,22 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 4 + 1;
-        this.color = `hsl(${40 + Math.random() * 40}, 100%, ${50 + Math.random() * 30
-          }%)`;
+        this.color = `hsl(${40 + Math.random() * 40}, 100%, ${50 + Math.random() * 30}%)`;
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 3 + 1.2; // 💨 илүү зөөлөн дэлбэрэлт
+        const speed = Math.random() * 3 + 1.2;
         this.speedX = Math.cos(angle) * speed;
         this.speedY = Math.sin(angle) * speed;
-        this.life = 150 + Math.random() * 80; // ⏳ урт нас
+        this.life = 150 + Math.random() * 80;
         this.opacity = 1;
       }
-
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
         this.speedY += 0.03;
         this.size *= 0.98;
         this.life--;
-        this.opacity -= 0.006; // 🕯 удаан бүдгэрнэ
+        this.opacity -= 0.006;
       }
-
       draw(ctx: CanvasRenderingContext2D) {
         ctx.globalAlpha = this.opacity;
         ctx.fillStyle = this.color;
@@ -108,6 +105,50 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
       window.removeEventListener("resize", resize);
     };
   }, []);
+
+  /* --- Add to Calendar (Outlook web only, no file download) --- */
+  const handleAddToCalendar = () => {
+    const title = "24K Celebration — New Year Party";
+    const description =
+      "Тансаг оройн зоог, хөгжилтэй уур амьсгал дунд мартагдашгүй үдшийг хамтдаа. Дресскод: 24K Gatsby ✨";
+    const location = "King Ballroom, 4th floor";
+
+    // Эвентийн хугацаа: prop-аас эхлэх, +3 цаг үргэлжилнэ (хүсвэл өөрчил)
+    const startLocal = new Date(eventDate);
+    const endLocal = new Date(startLocal.getTime() + 3 * 60 * 60 * 1000);
+
+    const startForLink = toLocalISOForOutlook(startLocal); // YYYY-MM-DDTHH:mm:ss
+    const endForLink = toLocalISOForOutlook(endLocal);
+
+    const params = new URLSearchParams({
+      path: "/calendar/action/compose",
+      rru: "addevent",
+      subject: title,
+      startdt: startForLink,
+      enddt: endForLink,
+      allday: "false",
+      location,
+      body: description,
+    }).toString();
+
+    // Work/School (office.com) эхэлж нээгээд, бүтэхгүй бол consumer (live.com) руу унагана
+    window.open(`https://outlook.office.com/calendar/0/deeplink/compose?${params}`, "_blank", "noopener,noreferrer") ||
+      window.open(`https://outlook.live.com/calendar/0/deeplink/compose?${params}`, "_blank", "noopener,noreferrer");
+  };
+
+  function pad(n: number) {
+    return n.toString().padStart(2, "0");
+  }
+  function toLocalISOForOutlook(d: Date) {
+    // Outlook deeplink ихэнхдээ timezone-гүй ISO-г хэрэглэгчийн локал гэж ойлгоно
+    const yyyy = d.getFullYear();
+    const MM = pad(d.getMonth() + 1);
+    const dd = pad(d.getDate());
+    const HH = pad(d.getHours());
+    const mm = pad(d.getMinutes());
+    const ss = pad(d.getSeconds());
+    return `${yyyy}-${MM}-${dd}T${HH}:${mm}:${ss}`;
+  }
 
   /* --- Hero Layout --- */
   return (
@@ -151,11 +192,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
       {/* Main Content */}
       <Container sx={{ position: "relative", zIndex: 3 }}>
         <Stack spacing={4} alignItems="center">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          >
+          <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1.2, ease: "easeOut" }}>
             <Typography
               variant="h2"
               sx={{
@@ -165,7 +202,6 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 letterSpacing: "4px",
                 textTransform: "uppercase",
                 color: "#FFD700",
-
                 background:
                   "linear-gradient(90deg, #FFD700 0%, #FFB300 30%, #FFF7C0 50%, #FFD700 70%, #FFB300 100%)",
                 WebkitBackgroundClip: "text",
@@ -180,11 +216,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
             </Typography>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.3 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.4, delay: 0.3 }}>
             <Typography
               variant="h5"
               sx={{
@@ -195,31 +227,21 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
                 px: 2,
               }}
             >
-              Хамтдаа шинэ жилийн баярыг угтан, тансаг оройн зоог, хөгжилтэй уур
-              амьсгал дунд мартагдашгүй үдшийг өнгөрөөе.
+              Хамтдаа шинэ жилийн баярыг угтан, тансаг оройн зоог, хөгжилтэй уур амьсгал дунд мартагдашгүй үдшийг өнгөрөөе.
             </Typography>
           </motion.div>
 
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-          >
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.6 }}>
             <Box className="my-4 grid grid-cols-1">
               <Countdown to_date={eventDate} />
             </Box>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.9 }}>
             <Button
               variant="contained"
               component="a"
               href="https://forms.office.com/r/77iw83zDMv"
-
               target="_blank"
               sx={{
                 position: "relative",
@@ -258,6 +280,47 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
               Бүртгүүлэх
             </Button>
 
+            {/* ==== Календарт нэмэх ==== */}
+            <Button
+              variant="contained"
+              onClick={handleAddToCalendar}
+              sx={{
+                position: "relative",
+                overflow: "hidden",
+                background: "linear-gradient(90deg, #FFD600, #FFA500)",
+                color: "#fff",
+                fontWeight: 700,
+                fontFamily: "'Inter', sans-serif",
+                px: 4,
+                py: 1.5,
+                ml: 2,
+                borderRadius: "9999px",
+                boxShadow: "0 0 20px rgba(255, 15, 0, 0.4)",
+                mb: 4,
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  transform: "scale(1.06)",
+                  boxShadow: "0 0 30px rgba(255, 215, 0, 0.8)",
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "100%",
+                    height: "100%",
+                    background:
+                      "linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,25,0.6) 50%, rgba(255,255,255,0.1) 100%)",
+                    animation: "shimmer 1.5s forwards",
+                  },
+                },
+                "@keyframes shimmer": {
+                  "0%": { left: "-100%" },
+                  "100%": { left: "100%" },
+                },
+              }}
+            >
+              Календарт нэмэх
+            </Button>
           </motion.div>
         </Stack>
       </Container>
