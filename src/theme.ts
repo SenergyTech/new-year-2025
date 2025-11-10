@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 /** Brand colors */
 const ink = "#0A0A0A";
 const inkPaper = "#111111";
-const gold = "#D4AF37";
+const gold = "#FFD700";
 const gold2 = "#E0C167";
 const ivory = "#F7F2E4";
 

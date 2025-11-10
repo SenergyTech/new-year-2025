@@ -216,15 +216,30 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
             </Typography>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.4, delay: 0.3 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4, delay: 0.3 }}
+          >
             <Typography
               variant="h5"
               sx={{
-                maxWidth: "500px",
-                color: "#e8e8e8",
-                fontFamily: "'Metropolis1920', serif",
-                lineHeight: 1.4,
+                maxWidth: "520px",
+                mx: "auto",
+                color: "#f3f3f3",
+                fontFamily: "'Playfair Display', 'Cormorant Garamond', serif",
+                fontWeight: 400,
+                fontStyle: "italic",
+                lineHeight: 1.6,
+                letterSpacing: "0.3px",
                 px: 2,
+                textShadow: "0 0 6px rgba(255, 215, 0, 0.25)",
+                fontSize: {
+                  xs: "1rem",   // 📱 small screens (утас)
+                  sm: "1.1rem", // tablet
+                  md: "1.6rem" // desktop
+                },
+                textAlign: "center",
               }}
             >
               Хамтдаа шинэ жилийн баярыг угтан, тансаг оройн зоог, хөгжилтэй уур амьсгал дунд мартагдашгүй үдшийг өнгөрөөе.
@@ -237,110 +252,114 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
             </Box>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.9 }}>
-            {/* === Бүртгүүлэх — шар дэвсгэр + хар текст, шимертэй === */}
-            <Button
-              variant="contained"
-              component="a"
-              href="https://forms.office.com/r/77iw83zDMv"
-              target="_blank"
-              sx={{
-                position: "relative",
-                overflow: "hidden",
-                background: "linear-gradient(90deg, #FFD700, #FFA500)",
-                color: "#000",
-                fontWeight: 700,
-                fontFamily: "'Inter', sans-serif",
-                px: 4,
-                py: 1.5,
-                borderRadius: "9999px",
-                boxShadow: "0 0 20px rgba(255, 215, 0, 0.4)",
-                mb: 4,
-                transition: "all 0.3s ease",
-                // shimmer base layer
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  top: 0,
-                  left: "-100%",
-                  width: "100%",
-                  height: "100%",
-                  background:
-                    "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
-                  transform: "translateX(0)",
-                },
-                "&:hover": {
-                  transform: "scale(1.06)",
-                  background: "linear-gradient(90deg, #000000, #1a1a1a)",
-                  color: "#FFD700",
-                  boxShadow: "0 0 25px rgba(255, 215, 0, 0.8)",
-                  "&::after": {
-                    animation: "shimmer 1.5s forwards",
-                  },
-                },
-                "@keyframes shimmer": {
-                  "0%": { left: "-100%" },
-                  "100%": { left: "100%" },
-                },
-              }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9 }}
+          >
+            <Stack
+              spacing={2}
+              direction={{ xs: "column", sm: "row" }} // 📱 Утсан дээр багана, 💻 desktop дээр мөр
+              justifyContent="center"
+              alignItems="center"
+              sx={{ mb: 4 }}
             >
-              Бүртгүүлэх
-            </Button>
-
-            {/* === Календарт нэмэх — хар дэвсгэр + шар текст, шимертэй === */}
-            <Button
-              variant="contained"
-              onClick={handleAddToCalendar}
-              sx={{
-                position: "relative",
-                overflow: "hidden",
-                background: "linear-gradient(90deg, #000000, #1a1a1a)",
-                color: "#FFD700",
-                fontWeight: 700,
-                fontFamily: "'Inter', sans-serif",
-                border: "0.5px solid #FFD700",
-                px: 4,
-                py: 1.5,
-                ml: 2,
-                borderRadius: "9999px",
-                boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
-                mb: 4,
-                transition: "all 0.3s ease",
-                // shimmer base layer
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  top: 0,
-                  left: "-100%",
-                  width: "100%",
-                  height: "100%",
-                 
-                  background:
-                    "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
-                  transform: "translateX(0)",
-                },
-                "&:hover": {
-                  transform: "scale(1.06)",
+              {/* === Бүртгүүлэх — шар дэвсгэр + хар текст, шимертэй === */}
+              <Button
+                variant="contained"
+                component="a"
+                href="https://forms.office.com/r/77iw83zDMv"
+                target="_blank"
+                sx={{
+                  position: "relative",
+                  overflow: "hidden",
                   background: "linear-gradient(90deg, #FFD700, #FFA500)",
                   color: "#000",
-                  border: "0.5px solid #000",
-                  boxShadow: "0 0 30px rgba(255, 215, 0, 0.8)",
+                  fontWeight: 700,
+                  fontFamily: "'Inter', sans-serif",
+                  px: 7,
+                  py: 1.5,
+                  borderRadius: "9999px",
+                  boxShadow: "0 0 20px rgba(255, 215, 0, 0.4)",
+                  transition: "all 0.3s ease",
                   "&::after": {
-                    animation: "shimmer 1.5s forwards",
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "100%",
+                    height: "100%",
+                    background:
+                      "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
+                    transform: "translateX(0)",
                   },
-                },
-                "@keyframes shimmer": {
-                  "0%": { left: "-100%" },
-                  "100%": { left: "100%" },
-                },
-              }}
-            >
-              Календарт нэмэх
-            </Button>
+                  "&:hover": {
+                    transform: "scale(1.06)",
+                    background: "linear-gradient(90deg, #000000, #1a1a1a)",
+                    color: "#FFD700",
+                    boxShadow: "0 0 25px rgba(255, 215, 0, 0.8)",
+                    "&::after": {
+                      animation: "shimmer 1.5s forwards",
+                    },
+                  },
+                  "@keyframes shimmer": {
+                    "0%": { left: "-100%" },
+                    "100%": { left: "100%" },
+                  },
+                }}
+              >
+                Бүртгүүлэх
+              </Button>
 
-
-
+              {/* === Календарт нэмэх — хар дэвсгэр + шар текст, шимертэй === */}
+              <Button
+                variant="contained"
+                onClick={handleAddToCalendar}
+                sx={{
+                  position: "relative",
+                  overflow: "hidden",
+                  background: "linear-gradient(90deg, #000000, #1a1a1a)",
+                  color: "#FFD700",
+                  fontWeight: 700,
+                  fontFamily: "'Inter', sans-serif",
+                  border: "0.5px solid #FFD700",
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: "9999px",
+                  boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
+                  transition: "all 0.3s ease",
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "100%",
+                    height: "100%",
+                    background:
+                      "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
+                    transform: "translateX(0)",
+                  },
+                  "&:hover": {
+                    transform: "scale(1.06)",
+                    background: "linear-gradient(90deg, #FFD700, #FFA500)",
+                    color: "#000",
+                    border: "0.5px solid #000",
+                    boxShadow: "0 0 30px rgba(255, 215, 0, 0.8)",
+                    "&::after": {
+                      animation: "shimmer 1.5s forwards",
+                    },
+                  },
+                  "@keyframes shimmer": {
+                    "0%": { left: "-100%" },
+                    "100%": { left: "100%" },
+                  },
+                }}
+              >
+                Календарт нэмэх
+              </Button>
+            </Stack>
           </motion.div>
+
         </Stack>
       </Container>
     </Box>

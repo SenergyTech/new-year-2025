@@ -16,17 +16,17 @@ export default function EventGuide() {
 
   // --- Мета мэдээлэл (зоригоороо өөрчилж болно) ---
   const eventMeta = {
-    dateLabel: "19 DECEMBER 2025",
-    timeRange: "17:30 AM – 00:00 PM",
+    dateLabel: "Арван хоёрдугаар сарын 19 2025",
+    timeRange: "18:00  – 00:00 ",
     venue: "KING BALLROOM",
     address: "ХУД - 15-р хороо, Улаанбаатар 17011",
   };
 
   // --- Хуваарь ---
   const schedule: { time: string; title: string }[] = [
-    { time: "17:30 AM", title: "Opening Ceremony" },
-    { time: "18:00 AM", title: "Presentation Session" },
-    { time: "19:00 AM", title: "Panel Discussion" },
+    { time: "18:00 AM", title: "Нээлтийн үйл ажиллагаа" },
+    { time: "19:00 AM", title: "Presentation Session" },
+  
     { time: "20:00 PM", title: "Interactive Workshops" },
     { time: "21:00 PM", title: "Networking Lunch" },
     { time: "22:00 PM", title: "Design Showcase and Portfolio Reviews" },
@@ -48,7 +48,7 @@ export default function EventGuide() {
   return (
     <Box
       component="section"
-      className="py-16 px-10"
+      className="lg:py-16 pb-20 px-10"
       sx={{ bgcolor: "background.default" }}
     >
       {/* --- Гарчиг --- */}

@@ -51,7 +51,8 @@ export default function EventLocation({
     <Box
       component="section"
       className="px-10 py-10"
-      sx={{ bgcolor: "primary.main" }}
+      sx={{ backgroundImage:
+      "linear-gradient(300deg, #F9F295 0%, #E0AA3E 40%, #FAF398 70%, #B88A44 100%)"}}
     >
       <Container maxWidth="lg">
         <Typography
