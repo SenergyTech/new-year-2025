@@ -29,7 +29,8 @@ export default function DressCodeSimple() {
               "0 0 1px rgba(255,215,0,0.4), 0 0 25px rgba(255,165,0,0.2)",
           }}
         >
-          Dress Code: Elegant & Glamorous
+          Dress Code: <br/>
+          Elegant & Glamorous
         </Typography>
      
        
