@@ -180,7 +180,7 @@ export default function DressCodeSimple() {
           fontStyle: "italic",
         }}
       >
-        Тансаг, дэгжин, гялалзсан — 1920-иод оны уур амьсгалыг сэргээе ✨
+       
       </Typography>
     </Box>
   );
