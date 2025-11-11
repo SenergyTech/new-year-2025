@@ -112,7 +112,7 @@ export default function EventLocation({
                     variant="body1"
                     sx={{ color: "text.primary", fontWeight: 500 }}
                   >
-                    Хаалга нээгдэх цаг: {formattedTime}
+                    Хаалга нээгдэх цаг: 17:30
                   </Typography>
                 </Box>
               </Stack>
