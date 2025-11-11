@@ -31,12 +31,7 @@ export default function EventLocation({
   const mapIframeSrc =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.2253036407174!2d106.9144616768891!3d47.90374607121858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d969300519532ad%3A0xeb3acf4c546e6bd8!2sKing%20Ballroom!5e1!3m2!1sen!2smn!4v1762323869203!5m2!1sen!2smn";
 
-  const formattedTime = eventDateTime
-    ? eventDateTime.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : "18:00";
+
 
   const formattedDate = eventDateTime
     ? eventDateTime.toLocaleDateString("mn-MN", {
