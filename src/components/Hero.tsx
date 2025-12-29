@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Box, Typography, Button, Container, Stack } from "@mui/material";
 import Countdown from "./Countdown";
 import { useEffect, useRef } from "react";
-
+import photo from "../assets/photos-preview.png";
 export default function Hero({ eventDate }: { eventDate: Date }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -107,48 +107,8 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
   }, []);
 
   /* --- Add to Calendar (Outlook web only, no file download) --- */
-  const handleAddToCalendar = () => {
-    const title = "24K Celebration — New Year Party";
-    const description =
-      "Dress Code:  Elegant & Glamorous ✨";
-    const location = "King Ballroom, 4th floor";
 
-    // Эвентийн хугацаа: prop-аас эхлэх, +3 цаг үргэлжилнэ (хүсвэл өөрчил)
-    const startLocal = new Date(eventDate);
-    const endLocal = new Date(startLocal.getTime() + 6 * 60 * 60 * 1000);
 
-    const startForLink = toLocalISOForOutlook(startLocal); // YYYY-MM-DDTHH:mm:ss
-    const endForLink = toLocalISOForOutlook(endLocal);
-
-    const params = new URLSearchParams({
-      path: "/calendar/action/compose",
-      rru: "addevent",
-      subject: title,
-      startdt: startForLink,
-      enddt: endForLink,
-      allday: "false",
-      location,
-      body: description,
-    }).toString();
-
-    // Work/School (office.com) эхэлж нээгээд, бүтэхгүй бол consumer (live.com) руу унагана
-    window.open(`https://outlook.office.com/calendar/0/deeplink/compose?${params}`, "_blank", "noopener,noreferrer") ||
-      window.open(`https://outlook.live.com/calendar/0/deeplink/compose?${params}`, "_blank", "noopener,noreferrer");
-  };
-
-  function pad(n: number) {
-    return n.toString().padStart(2, "0");
-  }
-  function toLocalISOForOutlook(d: Date) {
-    // Outlook deeplink ихэнхдээ timezone-гүй ISO-г хэрэглэгчийн локал гэж ойлгоно
-    const yyyy = d.getFullYear();
-    const MM = pad(d.getMonth() + 1);
-    const dd = pad(d.getDate());
-    const HH = pad(d.getHours());
-    const mm = pad(d.getMinutes());
-    const ss = pad(d.getSeconds());
-    return `${yyyy}-${MM}-${dd}T${HH}:${mm}:${ss}`;
-  }
 
   /* --- Hero Layout --- */
   return (
@@ -160,7 +120,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
         overflow: "hidden",
         fontFamily: "Inter, sans-serif",
       }}
-      className="mt-10 text-center"
+      className="mt-40 text-center mb-20"
     >
       {/* Golden Snowfall */}
       <div
@@ -211,39 +171,11 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
               }}
             >
               24K Celebration
- 
+
             </Typography>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.3 }}
-          >
-            <Typography
-              variant="h5"
-              sx={{
-                maxWidth: "520px",
-                mx: "auto",
-                color: "#f3f3f3",
-                fontFamily: "'Playfair Display', 'Cormorant Garamond', serif",
-                fontWeight: 400,
-                fontStyle: "italic",
-                lineHeight: 1.6,
-                letterSpacing: "0.3px",
-                px: 2,
-                textShadow: "0 0 6px rgba(255, 215, 0, 0.25)",
-                fontSize: {
-                  xs: "1rem",   // 📱 small screens (утас)
-                  sm: "1.1rem", // tablet
-                  md: "1.4rem" // desktop
-                },
-                textAlign: "center",
-              }}
-            >
-              Шинэ жилийн баярыг угтан, тансаг оройн зоог, хөгжилтэй уур амьсгал дунд хамтдаа мартагдашгүй үдшийг өнгөрөөе.
-            </Typography>
-          </motion.div>
+
 
           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.6 }}>
             <Box className="my-4 grid grid-cols-1">
@@ -251,6 +183,7 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
             </Box>
           </motion.div>
 
+          {/* ✅ Зөвхөн "Зураг үзэх" (Google Photos link) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -258,103 +191,57 @@ export default function Hero({ eventDate }: { eventDate: Date }) {
           >
             <Stack
               spacing={2}
-              direction={{ xs: "column", sm: "row" }} // 📱 Утсан дээр багана, 💻 desktop дээр мөр
+              direction={{ xs: "column", sm: "row" }}
               justifyContent="center"
               alignItems="center"
               sx={{ mb: 4 }}
             >
-              {/* === Бүртгүүлэх — шар дэвсгэр + хар текст, шимертэй === */}
               <Button
                 variant="contained"
                 component="a"
-                href="https://forms.office.com/r/77iw83zDMv"
+                href="https://photos.app.goo.gl/GQnK52289M8NxWWU6"
                 target="_blank"
-                sx={{
-                  position: "relative",
-                  overflow: "hidden",
-                  background: "linear-gradient(90deg, #FFD700, #FFA500)",
-                  color: "#000",
-                  fontWeight: 700,
-                  fontFamily: "'Inter', sans-serif",
-                  px: 7,
-                  py: 1.5,
-                  borderRadius: "9999px",
-                  boxShadow: "0 0 20px rgba(255, 215, 0, 0.4)",
-                  transition: "all 0.3s ease",
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    top: 0,
-                    left: "-100%",
-                    width: "100%",
-                    height: "100%",
-                    background:
-                      "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
-                    transform: "translateX(0)",
-                  },
-                  "&:hover": {
-                    transform: "scale(1.06)",
-                    background: "linear-gradient(90deg, #000000, #1a1a1a)",
-                    color: "#FFD700",
-                    boxShadow: "0 0 25px rgba(255, 215, 0, 0.8)",
-                    "&::after": {
-                      animation: "shimmer 1.5s forwards",
-                    },
-                  },
-                  "@keyframes shimmer": {
-                    "0%": { left: "-100%" },
-                    "100%": { left: "100%" },
-                  },
-                }}
-              >
-                Бүртгүүлэх
-              </Button>
-
-              {/* === Календарт нэмэх — хар дэвсгэр + шар текст, шимертэй === */}
-              <Button
-                variant="contained"
-                onClick={handleAddToCalendar}
+                rel="noopener noreferrer"
                 sx={{
                   position: "relative",
                   overflow: "hidden",
                   background: "linear-gradient(90deg, #000000, #1a1a1a)",
                   color: "#FFD700",
-                  fontWeight: 700,
+                  fontWeight: 800,
                   fontFamily: "'Inter', sans-serif",
-                  border: "0.5px solid #FFD700",
-                  px: 4,
-                  py: 1.5,
+                  px: 2.5,
+                  py: 1.2,
                   borderRadius: "9999px",
-                  boxShadow: "0 0 20px rgba(0, 0, 0, 0.6)",
+                  border: "0.5px solid rgba(255, 215, 0, 0.6)",
+                  boxShadow: "0 0 18px rgba(0, 0, 0, 0.55)",
                   transition: "all 0.3s ease",
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    top: 0,
-                    left: "-100%",
-                    width: "100%",
-                    height: "100%",
-                    background:
-                      "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.10) 100%)",
-                    transform: "translateX(0)",
-                  },
+                  textTransform: "none",
                   "&:hover": {
                     transform: "scale(1.06)",
                     background: "linear-gradient(90deg, #FFD700, #FFA500)",
                     color: "#000",
                     border: "0.5px solid #000",
                     boxShadow: "0 0 30px rgba(255, 215, 0, 0.8)",
-                    "&::after": {
-                      animation: "shimmer 1.5s forwards",
-                    },
-                  },
-                  "@keyframes shimmer": {
-                    "0%": { left: "-100%" },
-                    "100%": { left: "100%" },
                   },
                 }}
               >
-                Календарт нэмэх
+                <Box
+                  component="img"
+                  src={photo}
+                  alt="Event photos"
+                  sx={{
+                    width: 34,
+                    height: 34,
+                    borderRadius: "100px",
+                    mr: 1.4,
+                    objectFit: "cover",
+                    border: "1px solid rgba(255,215,0,0.35)",
+                  }}
+                />
+                Зураг үзэх
+                <Box component="span" sx={{ ml: 1, fontWeight: 900 }}>
+                  ↗
+                </Box>
               </Button>
             </Stack>
           </motion.div>

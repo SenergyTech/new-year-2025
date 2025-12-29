@@ -116,7 +116,7 @@ const Countdown: React.FC<CountdownProps> = ({ to_date }) => {
         // Use a gold accent for the finished message
         sx={{ color: "primary.main" }}
       >
-        🎉 Countdown Finished! The party has begun! 🎉
+        🎉 Шинэ жилийн арга хэмжээнд оролцсон  хүмүүсдээ баярлалаа 🎉
       </Typography>
     );
   }

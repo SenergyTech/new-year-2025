@@ -32,7 +32,7 @@ export default function LogoCarousel() {
       component="section"
       className="w-full py-12"
       // Use MUI background.default to match the body gradient/color
-      sx={{ bgcolor: "background.default" }}
+     
     >
       {/* OUTER: hides overflow */}
       {/* Use the custom hairline/divider style for a subtle frame */}
